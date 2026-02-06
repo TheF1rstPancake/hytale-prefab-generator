@@ -187,10 +187,18 @@ See [PROGRESS.md](PROGRESS.md) for details.
 
 ## Requirements
 
-- Node.js 18+
+- **Node.js 18.0.0 or higher** (required by MCP SDK)
 - Claude Desktop
-- Hytale `Assets.zip` (for building registry)
+- Hytale `Assets.zip` (for building registry, auto-detected)
 - Windows, Mac, or Linux
+
+**Check your Node version**:
+```bash
+node --version
+# Should show v18.0.0 or higher
+```
+
+**Install Node.js**: [nodejs.org](https://nodejs.org/) - Download the LTS version (v20.x recommended)
 
 ## Contributing
 
