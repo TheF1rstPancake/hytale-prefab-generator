@@ -117,8 +117,34 @@ Get all blocks in a specific category.
 Get all blocks in the "Rock" category
 ```
 
-### `validate_prefab`
-Validate a prefab JSON structure.
+### `create_prefab` ⭐ Recommended
+Create and save a prefab from just a blocks array. The MCP server automatically adds version numbers, block ID version, and anchor points.
+
+**Example**:
+```
+Create a prefab named "stone_tower" with these blocks:
+[
+  {x: 0, y: 0, z: 0, name: "Rock_Stone_Brick"},
+  {x: 1, y: 0, z: 0, name: "Rock_Stone_Brick"},
+  {x: 0, y: 1, z: 0, name: "Rock_Stone_Brick"}
+]
+```
+
+**Parameters**:
+- `name` (required): Filename without extension
+- `blocks` (required): Array of `{x, y, z, name, rotation?}` objects
+- `anchorX`, `anchorY`, `anchorZ` (optional): Anchor coordinates (default: 0, 0, 0)
+
+**Returns**:
+- Success status
+- File path
+- Stats (dimensions, block counts, materials)
+- Warnings (if any unknown blocks)
+
+**Why use this?** Much simpler than `save_prefab` - you don't need to remember version numbers or structure. Just provide the blocks!
+
+### `validate_prefab` (Advanced)
+Validate a complete prefab JSON structure.
 
 **Example**:
 ```
@@ -131,8 +157,8 @@ Returns:
 - Warnings (unknown blocks, etc.)
 - Stats (dimensions, block counts)
 
-### `save_prefab`
-Save a prefab JSON file.
+### `save_prefab` (Advanced)
+Save a complete prefab JSON file with version, blockIdVersion, anchors, and blocks already specified.
 
 **Example**:
 ```

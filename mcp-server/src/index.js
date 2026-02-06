@@ -148,8 +148,41 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         },
       },
       {
+        name: 'create_prefab',
+        description: 'Create and save a prefab from a blocks array (recommended - simpler than save_prefab). The MCP server will automatically add version, blockIdVersion, and anchor points.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'Filename without extension (e.g., "stone_tower")',
+            },
+            blocks: {
+              type: 'array',
+              description: 'Array of block objects with x, y, z, name, and optional rotation. Example: [{x: 0, y: 0, z: 0, name: "Rock_Stone_Brick"}]',
+            },
+            anchorX: {
+              type: 'number',
+              description: 'Optional X anchor point (default: 0)',
+              default: 0,
+            },
+            anchorY: {
+              type: 'number',
+              description: 'Optional Y anchor point (default: 0)',
+              default: 0,
+            },
+            anchorZ: {
+              type: 'number',
+              description: 'Optional Z anchor point (default: 0)',
+              default: 0,
+            },
+          },
+          required: ['name', 'blocks'],
+        },
+      },
+      {
         name: 'save_prefab',
-        description: 'Save a prefab JSON file to disk',
+        description: 'Save a complete prefab JSON file to disk (advanced - use create_prefab for simpler workflow)',
         inputSchema: {
           type: 'object',
           properties: {
@@ -159,7 +192,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             prefab: {
               type: 'object',
-              description: 'The prefab JSON object',
+              description: 'The complete prefab JSON object with version, blockIdVersion, anchors, and blocks',
             },
           },
           required: ['name', 'prefab'],
@@ -365,6 +398,124 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               valid: errors.length === 0,
               errors,
               warnings,
+            }, null, 2),
+          }],
+        };
+      }
+
+      case 'create_prefab': {
+        const {
+          name,
+          blocks,
+          anchorX = 0,
+          anchorY = 0,
+          anchorZ = 0
+        } = args;
+
+        // Validate blocks array
+        if (!Array.isArray(blocks) || blocks.length === 0) {
+          return {
+            content: [{
+              type: 'text',
+              text: JSON.stringify({
+                success: false,
+                error: 'blocks must be a non-empty array',
+              }, null, 2),
+            }],
+          };
+        }
+
+        // Validate and collect block stats
+        const errors = [];
+        const warnings = [];
+        const unknownBlocks = new Set();
+        const blockCounts = {};
+
+        blocks.forEach((block, idx) => {
+          if (typeof block.x !== 'number') errors.push(`Block ${idx}: missing x coordinate`);
+          if (typeof block.y !== 'number') errors.push(`Block ${idx}: missing y coordinate`);
+          if (typeof block.z !== 'number') errors.push(`Block ${idx}: missing z coordinate`);
+          if (!block.name) errors.push(`Block ${idx}: missing name`);
+
+          // Check if block exists in registry
+          if (block.name) {
+            const exists = blockRegistry.blocks.some(b => b.id === block.name);
+            if (!exists) {
+              unknownBlocks.add(block.name);
+            } else {
+              blockCounts[block.name] = (blockCounts[block.name] || 0) + 1;
+            }
+          }
+        });
+
+        if (unknownBlocks.size > 0) {
+          warnings.push(`Unknown block types: ${Array.from(unknownBlocks).join(', ')}`);
+        }
+
+        if (errors.length > 0) {
+          return {
+            content: [{
+              type: 'text',
+              text: JSON.stringify({
+                success: false,
+                errors,
+                warnings,
+              }, null, 2),
+            }],
+          };
+        }
+
+        // Calculate dimensions
+        const xs = blocks.map(b => b.x);
+        const ys = blocks.map(b => b.y);
+        const zs = blocks.map(b => b.z);
+
+        const minX = Math.min(...xs);
+        const maxX = Math.max(...xs);
+        const minY = Math.min(...ys);
+        const maxY = Math.max(...ys);
+        const minZ = Math.min(...zs);
+        const maxZ = Math.max(...zs);
+
+        const stats = {
+          totalBlocks: blocks.length,
+          dimensions: {
+            width: maxX - minX + 1,
+            height: maxY - minY + 1,
+            depth: maxZ - minZ + 1,
+          },
+          bounds: {
+            x: [minX, maxX],
+            y: [minY, maxY],
+            z: [minZ, maxZ],
+          },
+          materials: blockCounts,
+        };
+
+        // Create the prefab with proper structure
+        const prefab = {
+          version: 8,
+          blockIdVersion: 10,
+          anchorX,
+          anchorY,
+          anchorZ,
+          blocks,
+        };
+
+        // Save to file
+        const filename = `${name}.prefab.json`;
+        const filepath = path.join(PREFAB_DIR, filename);
+        fs.writeFileSync(filepath, JSON.stringify(prefab, null, 2));
+
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify({
+              success: true,
+              message: `Prefab created and saved: ${filename}`,
+              path: filepath,
+              stats,
+              warnings: warnings.length > 0 ? warnings : undefined,
             }, null, 2),
           }],
         };

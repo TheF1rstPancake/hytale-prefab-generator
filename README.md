@@ -106,8 +106,9 @@ npm run build-registry
 Claude Desktop connects to the server and gets access to tools:
 - `search_blocks` - Find blocks by name/category
 - `get_block_info` - Get block details
-- `validate_prefab` - Check prefab structure
-- `save_prefab` - Write `.prefab.json` files
+- `create_prefab` - Generate and save prefabs (simple - just provide blocks array!)
+- `validate_prefab` - Check prefab structure (advanced)
+- `save_prefab` - Write complete prefab JSON (advanced)
 - And more...
 
 ### 3. Generation Workflow
@@ -116,13 +117,13 @@ User: "Build a castle tower"
   ↓
 Claude: searches for stone/brick blocks
   ↓
-Claude: generates prefab JSON
+Claude: creates blocks array with coordinates
   ↓
-Claude: validates structure
+Claude: calls create_prefab (MCP server adds version, anchors, validates)
   ↓
-Claude: saves castle_tower.prefab.json
+Claude: returns stats (dimensions, materials used)
   ↓
-User: copies to Hytale → loads in-game
+User: copies castle_tower.prefab.json to Hytale → loads in-game
 ```
 
 ## Example Usage
@@ -133,11 +134,15 @@ Once set up, ask Claude things like:
 "Search for wooden planks in Hytale"
 → Returns: Wood_Oak_Planks, Wood_Softwood_Planks, etc.
 
-"Generate a 10x10x10 stone cube as a prefab"
-→ Creates prefab with 1000 Rock_Stone_Brick blocks
+"Generate a 10x10x10 stone brick cube"
+→ Searches for Rock_Stone_Brick
+→ Creates 1000 blocks with coordinates
+→ Saves as prefab with dimensions and material count
 
-"Create a small medieval house with a thatched roof"
-→ Searches for appropriate blocks → generates structure → saves file
+"Build me a small medieval house with a thatched roof"
+→ Searches for stone, wood, thatch blocks
+→ Generates structure with walls, roof, door
+→ Saves prefab with stats (dimensions, materials used)
 
 "What categories of blocks are available?"
 → Lists: Rock, Ores, TreeWood, PlantsAndTrees, Soils, etc.
