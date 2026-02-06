@@ -1,0 +1,24 @@
+{
+  "name": "@hytale-ai/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Hytale prefab generation with Claude",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "hytale-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "build-registry": "node scripts/build-block-registry.js",
+    "build-registry:help": "node scripts/build-block-registry.js --help",
+    "dev": "node --watch src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["hytale", "mcp", "claude", "prefab", "voxel"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^4.3.6"
+  }
+}

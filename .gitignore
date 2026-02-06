@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build artifacts
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary extraction directories
+/tmp/
+/mcp-server/data/*.tmp
+
+# Generated prefabs (optional - comment out if you want to track them)
+# /mcp-server/prefabs/*.prefab.json
+
+# Environment variables (if you create a .env file)
+.env
+.env.local
+
+# Debug logs
+/mcp-server/debug-*.log

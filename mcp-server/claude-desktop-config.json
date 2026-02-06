@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "hytale-prefab-generator": {
+      "command": "node",
+      "args": [
+        "/home/giovanni/scratch/hytale-prefab-generator/mcp-server/src/index.js"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,395 @@
+HYTALE SERVER INSTALLATION - COMPLETE DIRECTORY TREE
+=====================================================
+
+/home/hytale/server/
+├── Assets.zip (3,525,263,666 bytes - 3.5 GB)
+│   └── Contains: 64,450 files total
+│       ├── Common/
+│       │   ├── BlockTextures/ (688 PNG texture files)
+│       │   │   ├── Bone_*.png
+│       │   │   ├── Calcite*.png
+│       │   │   ├── Clay_*.png (all color variants)
+│       │   │   ├── Cloth_*.png (all color variants with light versions)
+│       │   │   ├── Cracks/ (24 breaking animation textures)
+│       │   │   ├── Deco_*.png
+│       │   │   ├── EditorBlock*.png
+│       │   │   ├── Fluid_*.png (Lava, Water, Slime, Poison)
+│       │   │   ├── Ore_*.png (Adamantite, Cobalt, Copper, Gold, Iron, etc.)
+│       │   │   ├── Rock_*.png (Stone, Shale, Slate, Sandstone, Basalt, etc.)
+│       │   │   ├── Wood_*.png (multiple variants)
+│       │   │   ├── _Debug/ (6 directional textures)
+│       │   │   └── [688 total PNG files]
+│       │   └── [Other common assets]
+│       │
+│       ├── Server/
+│       │   ├── Audio/ (Sound definitions and effects)
+│       │   │   └── AmbienceFX/
+│       │   │       ├── Ambience/
+│       │   │       │   ├── Global/
+│       │   │       │   │   ├── Cave/
+│       │   │       │   │   ├── Dungeon/
+│       │   │       │   │   ├── Mage_Tower/
+│       │   │       │   │   ├── Mineshaft/
+│       │   │       │   │   ├── Underwater/
+│       │   │       │   │   └── Weather/
+│       │   │       │   └── Unique/
+│       │   │       │       └── Dread_Wade/
+│       │   │       └── [JSON configuration files]
+│       │   │
+│       │   ├── BlockTypeList/ (Block registry and categorization)
+│       │   │   ├── AllScatter.json (4.6 KB)
+│       │   │   ├── Empty.json (34 bytes)
+│       │   │   ├── Gravel.json (194 bytes)
+│       │   │   ├── Ores.json (1.3 KB)
+│       │   │   ├── PlantScatter.json (3.5 KB)
+│       │   │   ├── PlantsAndTrees.json (18.3 KB)
+│       │   │   ├── Rock.json (348 bytes)
+│       │   │   ├── Snow.json (60 bytes)
+│       │   │   ├── Soils.json (309 bytes)
+│       │   │   ├── TreeLeaves.json (1.3 KB)
+│       │   │   ├── TreeWood.json (5.4 KB)
+│       │   │   └── TreeWoodAndLeaves.json (6.6 KB)
+│       │   │
+│       │   ├── Item/ (2,958+ item definition files)
+│       │   │   ├── Animations/
+│       │   │   │   ├── Axe.json
+│       │   │   │   ├── Battleaxe.json
+│       │   │   │   ├── Block.json (11.9 KB)
+│       │   │   │   ├── Bow.json
+│       │   │   │   ├── Club.json
+│       │   │   │   └── [More animation definitions]
+│       │   │   │
+│       │   │   ├── Block/
+│       │   │   │   ├── Blocks/
+│       │   │   │   │   └── _Debug/
+│       │   │   │   │       └── Debug_Test_Block.json
+│       │   │   │   ├── BreakingDecals/
+│       │   │   │   │   ├── Breaking_Decals_Rock.json
+│       │   │   │   │   ├── Breaking_Decals_Soil.json
+│       │   │   │   │   ├── Breaking_Decals_Wood.json
+│       │   │   │   │   └── Unknown.json
+│       │   │   │   ├── FluidFX/
+│       │   │   │   │   ├── Lava.json
+│       │   │   │   │   ├── Mud.json
+│       │   │   │   │   ├── Slime.json
+│       │   │   │   │   └── Water.json
+│       │   │   │   ├── Fluids/
+│       │   │   │   │   ├── Lava.json
+│       │   │   │   │   ├── Lava_Source.json
+│       │   │   │   │   ├── Poison.json
+│       │   │   │   │   ├── Poison_Source.json
+│       │   │   │   │   ├── Slime.json
+│       │   │   │   │   ├── Slime_Red.json
+│       │   │   │   │   ├── Slime_Red_Source.json
+│       │   │   │   │   ├── Slime_Source.json
+│       │   │   │   │   ├── Tar.json
+│       │   │   │   │   ├── Tar_Source.json
+│       │   │   │   │   ├── Water.json
+│       │   │   │   │   ├── Water_Finite.json
+│       │   │   │   │   └── Water_Source.json
+│       │   │   │   ├── Hitboxes/
+│       │   │   │   │   ├── Bench/
+│       │   │   │   │   │   ├── Bench_Alchemy.json
+│       │   │   │   │   │   ├── Bench_Architect.json
+│       │   │   │   │   │   ├── Bench_Armor.json
+│       │   │   │   │   │   └── [More benches]
+│       │   │   │   │   └── [Other hitbox definitions]
+│       │   │   │   └── [Other block configurations]
+│       │   │   │
+│       │   │   ├── Category/
+│       │   │   │   └── CreativeLibrary/
+│       │   │   │       └── Blocks.json (1.2 KB) - Block category hierarchy
+│       │   │   │
+│       │   │   ├── Interactions/
+│       │   │   │   ├── Explosions/
+│       │   │   │   │   └── Explode_Generic_Blocks.json
+│       │   │   │   └── Weapons/
+│       │   │   │       └── [Combat interactions]
+│       │   │   │
+│       │   │   ├── Items/ (2,958 individual item JSON files)
+│       │   │   │   ├── Armor/
+│       │   │   │   │   ├── Adamantite/
+│       │   │   │   │   ├── Bronze/
+│       │   │   │   │   ├── Cloth_Cindercloth/
+│       │   │   │   │   ├── Cloth_Cotton/
+│       │   │   │   │   ├── Cloth_Linen/
+│       │   │   │   │   ├── Cloth_Silk/
+│       │   │   │   │   ├── Cloth_Wool/
+│       │   │   │   │   └── [Many more armor types]
+│       │   │   │   │
+│       │   │   │   ├── Cloth/
+│       │   │   │   │   └── Wool/
+│       │   │   │   │       ├── Cloth_Block_Wool_Black.json
+│       │   │   │   │       ├── Cloth_Block_Wool_Blue.json
+│       │   │   │   │       ├── Cloth_Block_Wool_Blue_Light.json
+│       │   │   │   │       ├── [All 12 color variants + Light variants]
+│       │   │   │   │       └── Cloth_Block_Wool_Yellow_Light.json
+│       │   │   │   │
+│       │   │   │   ├── Categories/
+│       │   │   │   │   ├── ExamplePrefabPlacementBlock_Tree.json
+│       │   │   │   │   └── Filter_Air_Block.json
+│       │   │   │   │
+│       │   │   │   ├── Editor/
+│       │   │   │   │   └── Editor_Block.json
+│       │   │   │   │
+│       │   │   │   ├── Food/
+│       │   │   │   │   └── Food_Fish_Raw_Uncommon.json
+│       │   │   │   │
+│       │   │   │   ├── Furniture/
+│       │   │   │   │   ├── Prototype_Window_Connected_Blocks/
+│       │   │   │   │   │   ├── Prototype_Window_Corner_Bottom_Left.json
+│       │   │   │   │   │   ├── Prototype_Window_Corner_Bottom_Right.json
+│       │   │   │   │   │   └── [Connected block variants]
+│       │   │   │   │   └── [Other furniture]
+│       │   │   │   │
+│       │   │   │   ├── Plant/ (Crop and vegetation blocks)
+│       │   │   │   │   ├── Bushes/
+│       │   │   │   │   │   └── [Bush variants]
+│       │   │   │   │   ├── Cacti/
+│       │   │   │   │   │   └── [Cactus variants]
+│       │   │   │   │   ├── Coral/
+│       │   │   │   │   │   └── [Coral variants]
+│       │   │   │   │   ├── Crop/
+│       │   │   │   │   │   ├── Plant_Crop_Mushroom_Common_Blue.json
+│       │   │   │   │   │   ├── Plant_Crop_Mushroom_Common_Brown.json
+│       │   │   │   │   │   └── [More crop variants]
+│       │   │   │   │   ├── Flowers/
+│       │   │   │   │   │   ├── Bushes/
+│       │   │   │   │   │   ├── Common/
+│       │   │   │   │   │   ├── Flax/
+│       │   │   │   │   │   ├── Hemlock/
+│       │   │   │   │   │   ├── Orchid/
+│       │   │   │   │   │   ├── Tall/
+│       │   │   │   │   │   └── [100+ flower variants]
+│       │   │   │   │   ├── Fruit/
+│       │   │   │   │   ├── Grass/
+│       │   │   │   │   │   └── [Grass variants by biome]
+│       │   │   │   │   ├── Leaves/
+│       │   │   │   │   ├── Moss/
+│       │   │   │   │   ├── Petals/
+│       │   │   │   │   └── Plant_*.json (individual plant files)
+│       │   │   │   │
+│       │   │   │   ├── Weapons/
+│       │   │   │   │   └── [Weapon definitions]
+│       │   │   │   │
+│       │   │   │   └── [Other item categories]
+│       │   │   │
+│       │   │   ├── NPC/
+│       │   │   │   └── Roles/
+│       │   │   │       └── _Core/
+│       │   │   │           └── Tests/
+│       │   │   │               └── Test_Place_Blocks.json
+│       │   │   │
+│       │   │   └── Unarmed/
+│       │   │       └── Gathering/
+│       │   │           ├── DungeonBlocks.json
+│       │   │           └── SoftBlocks.json
+│       │   │
+│       │   ├── Entity/
+│       │   │   ├── Effects/
+│       │   │   │   └── Drop/
+│       │   │   │       └── Drop_Uncommon.json
+│       │   │   └── ModelVFX/
+│       │   │       └── Drop_Uncommon.json
+│       │   │
+│       │   ├── World/ (World generation and instances)
+│       │   │   ├── Default/
+│       │   │   │   ├── Mask.json
+│       │   │   │   ├── Mask/
+│       │   │   │   │   ├── Blend_Inner.json
+│       │   │   │   │   ├── Blend_Outer.json
+│       │   │   │   │   ├── Climate/
+│       │   │   │   │   │   ├── Cold.json
+│       │   │   │   │   │   ├── Hot.json
+│       │   │   │   │   │   ├── Island/
+│       │   │   │   │   │   │   ├── Tier1.json
+│       │   │   │   │   │   │   ├── Tier2.json
+│       │   │   │   │   │   │   └── Tier3.json
+│       │   │   │   │   │   ├── Temperate.json
+│       │   │   │   │   │   └── [Biome definitions]
+│       │   │   │   │   ├── Continent/
+│       │   │   │   │   ├── Intensity.json
+│       │   │   │   │   └── Temperature/
+│       │   │   │   └── Ores/
+│       │   │   │       ├── Zone0/
+│       │   │   │       │   ├── Copper.json
+│       │   │   │       │   ├── CopperPlacement.json
+│       │   │   │       │   ├── Iron.json
+│       │   │   │       │   └── IronPlacement.json
+│       │   │   │       ├── Zone1/
+│       │   │   │       │   └── [Ore configs for zone 1]
+│       │   │   │       └── Zone2/
+│       │   │   │           └── [Ore configs for zone 2]
+│       │   │   │
+│       │   │   ├── Instance_Dungeon_Goblin/
+│       │   │   │   ├── World.json
+│       │   │   │   ├── Zones.json
+│       │   │   │   ├── Prefabs/
+│       │   │   │   │   └── Dungeon_Goblin/
+│       │   │   │   │       ├── Goblin_0_Entrance.prefab.json
+│       │   │   │   │       ├── Goblin_1_Rat_Cave.prefab.json
+│       │   │   │   │       ├── Goblin_2_Spider_Cave.prefab.json
+│       │   │   │   │       ├── Goblin_3_Checkpoint.prefab.json
+│       │   │   │   │       ├── Goblin_4_Goblin_Tunnels.prefab.json
+│       │   │   │   │       ├── Goblin_5_Ogre.prefab.json
+│       │   │   │   │       ├── Goblin_6_Checkpoint.prefab.json
+│       │   │   │   │       ├── Goblin_7_Boss.prefab.json (5.5 MB)
+│       │   │   │   │       └── Monuments/
+│       │   │   │   │           └── Unique/
+│       │   │   │   │               └── Start_Camp/
+│       │   │   │   │                   ├── Unique_Start_Camp_SpawnCamp_001.prefab.json
+│       │   │   │   │                   ├── Unique_Start_Camp_SpawnCamp_002.prefab.json
+│       │   │   │   │                   └── [More spawn camps]
+│       │   │   │   └── [Zone definitions]
+│       │   │   │
+│       │   │   ├── Instance_Forgotten_Temple/
+│       │   │   │   ├── World.json
+│       │   │   │   ├── Zones.json
+│       │   │   │   └── [Temple-specific data]
+│       │   │   │
+│       │   │   ├── Void/
+│       │   │   │   ├── World.json
+│       │   │   │   ├── Zones.json
+│       │   │   │   └── [Void dimension data]
+│       │   │   │
+│       │   │   ├── grasslands_river_noise_report.json
+│       │   │   ├── npcRenames.json
+│       │   │   ├── renameScript.js
+│       │   │   └── renames.json
+│       │   │
+│       │   └── [Other server components]
+│       │
+│       ├── Cosmetics/ (Character customization)
+│       │   ├── CharacterCreator/
+│       │   │   ├── BodyCharacteristics.json
+│       │   │   ├── Capes.json
+│       │   │   ├── EarAccessory.json
+│       │   │   ├── Ears.json
+│       │   │   ├── Emotes.json
+│       │   │   ├── EyeColors.json
+│       │   │   ├── Eyebrows.json
+│       │   │   ├── Eyes.json
+│       │   │   ├── FaceAccessory.json
+│       │   │   ├── Faces.json
+│       │   │   ├── FacialHair.json
+│       │   │   ├── GenericColors.json
+│       │   │   ├── Gloves.json
+│       │   │   ├── GradientSets.json
+│       │   │   ├── HairColors.json
+│       │   │   ├── HaircutFallbacks.json
+│       │   │   ├── Haircuts.json
+│       │   │   ├── HeadAccessory.json
+│       │   │   ├── Mouths.json
+│       │   │   ├── Overpants.json
+│       │   │   ├── Overtops.json
+│       │   │   ├── Pants.json
+│       │   │   ├── Shoes.json
+│       │   │   ├── SkinFeatures.json
+│       │   │   ├── Tags.json
+│       │   │   ├── Undertops.json
+│       │   │   └── Underwear.json
+│       │   └── [Other cosmetic assets]
+│       │
+│       └── manifest.json (45 bytes)
+│           {
+│             "Group": "Hytale",
+│             "Name": "Hytale"
+│           }
+│
+├── Server/ (Active server installation - 1.5 GB)
+│   ├── AdminUI/
+│   │   ├── AdminStickConfiguration.json
+│   │   ├── Backup.json
+│   │   ├── Mute.json
+│   │   └── PlayerTracker.json
+│   │
+│   ├── backups/
+│   │   ├── backup-index.json
+│   │   └── archive/
+│   │
+│   ├── Licenses/
+│   │
+│   ├── logs/
+│   │
+│   ├── mods/
+│   │   ├── Hytale_Shop/
+│   │   │   └── barter_shop_state.json
+│   │   ├── com.dairymoose_SpawnControl/
+│   │   │   └── config.json
+│   │   ├── com.gfsbackup_GFSBackup/
+│   │   │   └── config.json
+│   │   ├── com.gfsbackup_WorldKeeper/
+│   │   │   └── config.json
+│   │   ├── Nitrado_PerformanceSaver/
+│   │   │   ├── config.json
+│   │   │   └── restore.json
+│   │   └── Nitrado_WebServer/
+│   │       ├── provisioning/
+│   │       └── store/
+│   │
+│   ├── universe/
+│   │   ├── worlds/
+│   │   │   └── default/
+│   │   │       ├── config.json
+│   │   │       ├── chunks/ (World chunk data)
+│   │   │       └── resources/
+│   │   │           ├── BlockCounter.json
+│   │   │           ├── BlockMapMarkers.json
+│   │   │           ├── InstanceData.json
+│   │   │           ├── PrefabEditSession.json
+│   │   │           ├── ReputationData.json
+│   │   │           ├── SpawnSuppressionController.json
+│   │   │           └── Time.json
+│   │   ├── players/ (Player save data)
+│   │   │   ├── 6ee88bea-a9a8-4bd9-a791-0d45287833d4.json
+│   │   │   ├── be72fc6d-2a0b-4de9-a1fa-75dfb7e272d3.json
+│   │   │   └── 4adaf3ab-de89-4d3f-a67e-1a7f511a3dec.json
+│   │   ├── warps.json
+│   │   └── memories.json
+│   │
+│   ├── config.json (Main server configuration)
+│   ├── permissions.json
+│   ├── whitelist.json
+│   └── bans.json
+│
+├── staging_area/
+│   ├── backups/
+│   │   └── archive/
+│   ├── worlds/
+│   │   └── default/
+│   │       ├── chunks/
+│   │       └── resources/
+│   └── players/
+│
+├── 2026.01.28-87d03be09.zip (1.5 GB)
+│
+├── hytale-downloader.zip (9.7 MB)
+│
+├── QUICKSTART.md
+│
+├── start.sh
+│
+└── start.bat
+
+---
+
+KEY STATISTICS:
+- Total Files in Assets.zip: 64,450
+- Block Definition JSON Files: 6,071
+- Individual Item Definition Files: 2,958
+- Block Texture PNG Files: 688
+- Total Texture PNG Files: 9,517
+- Assets Archive Size: 3.5 GB
+- Total Server Size: ~5 GB
+
+---
+
+BLOCK TYPES AVAILABLE (from BlockTypeList):
+- Rocks: Stone, Shale, Slate, Quartzite, Sandstone, Basalt, Volcanic, Marble, Calcite, Aqua, Chalk, Bedrock, Salt
+- Ores: Adamantite, Cobalt, Copper, Gold, Iron, Mithril, Onyxium, Silver, Thorium (on Stone, Basalt, Shale, Slate, Volcanic, Sandstone bases)
+- Soils: Various soil types
+- Plants: Grasses, Flowers, Trees, Crops, Bushes, Cacti, Moss, Petals
+- Fluids: Water, Lava, Poison, Slime (red variant), Tar
+- Cloth/Dyes: 12 color variants + light variants
+- Wood: Multiple wood types and variants
+- Furniture: Benches, windows, decorative blocks
