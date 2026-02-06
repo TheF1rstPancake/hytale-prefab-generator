@@ -4,17 +4,22 @@ Get the Hytale MCP Server running in 5 minutes!
 
 ## Local Installation (Recommended)
 
-### Step 1: Copy Files to Your Computer
+### Step 1: Clone or Pull the Repository
 
-From your Windows machine:
+**If you already cloned via git**:
 ```cmd
-mkdir C:\hytale-mcp
-scp -r giovanni@MEGALODON:/home/giovanni/scratch/hytale-prefab-generator/mcp-server/* C:\hytale-mcp\
+cd C:\Users\Giovanni\scratch\hytale-prefab-generator
+git pull
+```
+
+**If first time**:
+```cmd
+git clone <repo-url> C:\Users\Giovanni\scratch\hytale-prefab-generator
 ```
 
 ### Step 2: Install Dependencies
 ```cmd
-cd C:\hytale-mcp
+cd C:\Users\Giovanni\scratch\hytale-prefab-generator\mcp-server
 npm install
 ```
 
@@ -22,6 +27,8 @@ npm install
 ```cmd
 node src\index.js
 ```
+
+**Note**: The block registry data is already included, so you don't need to rebuild it!
 
 **Expected output**:
 ```

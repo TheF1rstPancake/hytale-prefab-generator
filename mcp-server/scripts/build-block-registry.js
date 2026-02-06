@@ -37,9 +37,41 @@ Examples:
   }
 }
 
-// Determine assets path: CLI arg > env var > default
+// Auto-detect Assets.zip location
+function findAssetsZip() {
+  const searchPaths = [
+    // Linux/Mac server
+    '/home/hytale/server/Assets.zip',
+    '/opt/hytale/server/Assets.zip',
+
+    // Windows single-player
+    process.env.APPDATA && path.join(process.env.APPDATA, 'Hytale', 'install', 'release', 'package', 'game', 'Assets.zip'),
+    process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Hytale', 'install', 'release', 'package', 'game', 'Assets.zip'),
+
+    // Windows server
+    'C:\\hytale\\server\\Assets.zip',
+    'D:\\hytale\\server\\Assets.zip',
+
+    // Common game install locations
+    'C:\\Program Files\\Hytale\\Assets.zip',
+    'C:\\Program Files (x86)\\Hytale\\Assets.zip',
+    'C:\\Games\\Hytale\\Assets.zip',
+  ].filter(Boolean); // Remove any null/undefined entries
+
+  for (const searchPath of searchPaths) {
+    if (fs.existsSync(searchPath)) {
+      console.log(`✓ Auto-detected Assets.zip at: ${searchPath}\n`);
+      return searchPath;
+    }
+  }
+
+  return null;
+}
+
+// Determine assets path: CLI arg > env var > auto-detect > default
 const HYTALE_ASSETS_ZIP = assetsPath ||
                           process.env.HYTALE_ASSETS_PATH ||
+                          findAssetsZip() ||
                           '/home/hytale/server/Assets.zip';
 const EXTRACT_DIR = '/tmp/hytale-assets-extract';
 const OUTPUT_DIR = path.join(__dirname, '../data');
