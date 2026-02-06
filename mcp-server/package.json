@@ -9,8 +9,9 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "build-registry": "node scripts/build-block-registry.js",
-    "build-registry:help": "node scripts/build-block-registry.js --help",
+    "build-registry": "node scripts/build-block-registry.cjs",
+    "build-registry:v2": "node scripts/build-block-registry-v2.cjs",
+    "build-registry:help": "node scripts/build-block-registry.cjs --help",
     "dev": "node --watch src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
