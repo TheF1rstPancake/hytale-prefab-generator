@@ -76,14 +76,24 @@ console.log(`📦 Using assets: ${HYTALE_ASSETS_ZIP}\n`);
 
 // Step 1: Extract all block item definitions
 console.log('📋 Step 1: Extracting all block items from Server/Item/Items/...');
-console.log('  (This may take a minute - extracting ~2,958 block definitions)\n');
+console.log('  (This may take ~30 seconds - extracting entire Items directory)\n');
 
 try {
-  execSync(`unzip -o -q "${HYTALE_ASSETS_ZIP}" "Server/Item/Items/*/*.json" "Server/Item/Items/*/*/*.json" -d "${EXTRACT_DIR}"`, { stdio: 'inherit' });
+  // Extract the entire Server/Item/Items/ directory (simpler and more reliable)
+  execSync(`unzip -o -q "${HYTALE_ASSETS_ZIP}" "Server/Item/Items/*" -d "${EXTRACT_DIR}"`, { stdio: 'inherit' });
   console.log('✅ Block item definitions extracted\n');
 } catch (error) {
   console.error('❌ Failed to extract block items:', error.message);
-  process.exit(1);
+  console.error('\nTrying alternative extraction method...\n');
+
+  // Fallback: extract specific paths we know exist
+  try {
+    execSync(`unzip -o -q "${HYTALE_ASSETS_ZIP}" "Server/Item/Items/" -d "${EXTRACT_DIR}"`, { stdio: 'inherit' });
+    console.log('✅ Block item definitions extracted (fallback method)\n');
+  } catch (fallbackError) {
+    console.error('❌ Fallback also failed:', fallbackError.message);
+    process.exit(1);
+  }
 }
 
 // Step 2: Read all block item files and extract those with BlockType
